@@ -11,21 +11,15 @@
 musings about how people work and how work work
 
 a few notes
-```dataview
-LIST
-FROM "notes"
-WHERE dg-publish=true
-LIMIT 7
-```
+
+{ .block-language-dataview}
 a few observations[^1]
 
-```dataview
-LIST rows.file.link
-FROM "observations"
-WHERE dg-publish=true
-SORT file.path DESC, file.name ASC
-group by file.folder
-```
+- observations/2010: 
+    - [[observations/2010/are STUPID goals better than SMART goals?\|are STUPID goals better than SMART goals?]]
+
+
+{ .block-language-dataview}
 
 [^1]: to observe - notice, take note of, make a remark about something (interesting)
 
