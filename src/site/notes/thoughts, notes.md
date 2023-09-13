@@ -23,7 +23,7 @@ a few observations[^1]
 
 [^1]: to observe - notice, take note of, make a remark about something (interesting)
 
-*contact: ingvald at skaug dot no, or https://indieweb.social/@ingvald*
+<div><address>contact: ingvald at skaug dot no, or https://indieweb.social/@ingvald</address></div>
 
 <style>
 .footer, .backlinks {
