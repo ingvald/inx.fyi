@@ -38,6 +38,7 @@ module.exports = function (eleventyConfig) {
   let markdownLib = markdownIt({
     breaks: true,
     html: true,
+    linkify: true,
   })
     .use(require("markdown-it-anchor"), {
       slugify: headerToId,
@@ -133,9 +134,8 @@ module.exports = function (eleventyConfig) {
             collapseClasses += " is-collapsed"
           }
 
-          let res = `<div data-callout-metadata class="callout ${collapseClasses}" data-callout="${
-            token.info.substring(3)
-          }">${titleDiv}\n<div class="callout-content">${md.render(
+          let res = `<div data-callout-metadata class="callout ${collapseClasses}" data-callout="${token.info.substring(3)
+            }">${titleDiv}\n<div class="callout-content">${md.render(
             parts.slice(nbLinesToSkip).join("\n")
           )}</div></div>`;
           return res
@@ -152,7 +152,17 @@ module.exports = function (eleventyConfig) {
         };
       md.renderer.rules.image = (tokens, idx, options, env, self) => {
         const imageName = tokens[idx].content;
-        const [fileName, width] = imageName.split("|");
+        const [fileName, ...widthAndMetaData] = imageName.split("|");
+        const lastValue = widthAndMetaData[widthAndMetaData.length - 1];
+        const lastValueIsNumber = !isNaN(lastValue);
+        const width = lastValueIsNumber ? lastValue : null;
+        let metaData = "";
+        if (widthAndMetaData.length > 1) {
+          metaData = widthAndMetaData.slice(0, widthAndMetaData.length - 1).join(" ");
+        }
+        if (!lastValueIsNumber) {
+          metaData += ` ${lastValue}`;
+        }
         if (width) {
           const widthIndex = tokens[idx].attrIndex("width");
           const widthAttr = `${width}px`;
@@ -248,7 +258,7 @@ module.exports = function (eleventyConfig) {
         if(deadLink){
           return `<a class="internal-link is-unresolved" href="/404">${title}</a>`;
         }
-        return `<a class="internal-link data-note-icon="${noteIcon}" href="${permalink}${headerLinkPath}">${title}</a>`;
+        return `<a class="internal-link" data-note-icon="${noteIcon}" href="${permalink}${headerLinkPath}">${title}</a>`;
       })
     );
   });
@@ -301,16 +311,17 @@ module.exports = function (eleventyConfig) {
 
         let titleDiv = "";
         let calloutType = "";
+        let calloutMetaData = "";
         let isCollapsable;
         let isCollapsed;
-        const calloutMeta = /\[!([\w-]*)\](\+|\-){0,1}(\s?.*)/;
+        const calloutMeta = /\[!([\w-]*)\|?(\s?.*)\](\+|\-){0,1}(\s?.*)/;
         if (!content.match(calloutMeta)) {
           continue;
         }
 
         content = content.replace(
           calloutMeta,
-          function (metaInfoMatch, callout, collapse, title) {
+          function (metaInfoMatch, callout, metaData, collapse, title) {
             isCollapsable = Boolean(collapse);
             isCollapsed = collapse === "-";
             const titleText = title.replace(/(<\/{0,1}\w+>)/, "")
@@ -323,6 +334,7 @@ module.exports = function (eleventyConfig) {
               : ``;
 
             calloutType = callout;
+            calloutMetaData = metaData;
             titleDiv = `<div class="callout-title"><div class="callout-title-inner">${titleText}</div>${fold}</div>`;
             return "";
           }
@@ -333,6 +345,7 @@ module.exports = function (eleventyConfig) {
         blockquote.classList.add(isCollapsable ? "is-collapsible" : "");
         blockquote.classList.add(isCollapsed ? "is-collapsed" : "");
         blockquote.setAttribute("data-callout", calloutType.toLowerCase());
+        calloutMetaData && blockquote.setAttribute("data-callout-metadata", calloutMetaData);
         blockquote.innerHTML = `${titleDiv}\n<div class="callout-content">${content}</div>`;
       }
     };
@@ -493,7 +506,7 @@ module.exports = function (eleventyConfig) {
     },
     templateFormats: ["njk", "md", "11ty.js"],
     htmlTemplateEngine: "njk",
-    markdownTemplateEngine: "njk",
+    markdownTemplateEngine: false,
     passthroughFileCopy: true,
   };
 };
