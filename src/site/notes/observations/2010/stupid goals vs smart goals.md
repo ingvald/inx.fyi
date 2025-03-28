@@ -2,6 +2,7 @@
 {"dg-publish":true,"permalink":"/observations/2010/stupid-goals-vs-smart-goals/","title":"are STUPID goals better than SMART goals?","created":"2010-04-08"}
 ---
 
+# are STUPID goals better than SMART goals?
 
 SMART #goals are like waterfall[^1] software development.
 
