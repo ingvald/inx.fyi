@@ -2,7 +2,7 @@
 {"dg-publish":true,"permalink":"/thoughts-notes/","pinned":true,"tags":["gardenEntry"]}
 ---
 
-
+[]()
 ## ..on people and knowledge work
 
 
@@ -16,7 +16,7 @@ a few notes
 a few observations[^1]
 
 - observations/2010: 
-    - [[observations/2010/are STUPID goals better than SMART goals?\|are STUPID goals better than SMART goals?]]
+    - [[observations/2010/stupid goals vs smart goals\|stupid goals vs smart goals]]
 
 
 { .block-language-dataview}
