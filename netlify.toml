@@ -12,3 +12,7 @@
   to = "/404"
   status = 404
 
+[[plugins]]
+package = "netlify-plugin-checklinks"
+checkExternal = true
+skipPatterns = ["obsidian-base"]
