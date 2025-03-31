@@ -16,7 +16,7 @@ a few notes
 a few observations[^1]
 
 - observations/2010: 
-    - [[observations/2010/stupid goals vs smart goals\|stupid goals vs smart goals]]
+    - [[observations/2010/stupid goals vs smart goals\|are STUPID goals better than SMART goals?]]
 
 
 { .block-language-dataview}
