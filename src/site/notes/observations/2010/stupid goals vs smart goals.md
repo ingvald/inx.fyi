@@ -43,4 +43,4 @@ see also ["why smart people should set stupid goals" (linkedin)](https://www.li
 (**S**ervice-oriented, **T**rue to self, **U**nique, **P**ositive, **I**nspiring, **D**aring)
 
 [^1]: the simplified, traditional view of waterfall, at least...
-[^2]: from an unfortunately outdated link on runningagile.com
+[^2]: from an unfortunately outdated link on runningagile . com ([archived](https://web.archive.org/web/20131111095842/http://runningagile.com/2010/01/31/stupid-goals/))
