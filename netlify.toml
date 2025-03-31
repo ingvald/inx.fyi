@@ -17,4 +17,5 @@ package = "netlify-plugin-checklinks"
 
   [plugins.inputs]
   checkExternal = true
-  skipPatterns = ["repo/dist"]
+  skipPatterns = ["repo/dist", "dist/styles/public/images"]
+  
