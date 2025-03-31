@@ -21,6 +21,7 @@ a few observations[^1]
 
 { .block-language-dataview}
 
+
 [^1]: to observe - notice, take note of, make a remark about something (interesting)
 
 <div style="font-size: smaller"><address>https://inx.fyi | ingvald at skaug dot no | <a href="https://indieweb.social/@ingvald">indieweb.social/@ingvald</a></address></div>
