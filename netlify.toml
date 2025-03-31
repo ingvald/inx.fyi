@@ -12,3 +12,9 @@
   to = "/404"
   status = 404
 
+[[plugins]]
+package = "netlify-plugin-checklinks"
+
+  [plugins.inputs]
+  checkExternal = true
+  skipPatterns = ["repo/dist", "dist/styles/public/images"]
